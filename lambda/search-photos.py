@@ -20,7 +20,6 @@ def close(session_attributes, fulfillment_state, message):
     }
     return response
 def dispatch(intent_request):
-    #logger.debug('dispatch userId={}, intentName={}'.format(intent_request['userId'], intent_request['currentIntent']['name']))
     intent_name = intent_request['currentIntent']['name']
     return search_intent(intent_request)
     raise Exception('Intent with name ' + intent_name + ' not supported')
@@ -44,21 +43,13 @@ def search_intent(labels):
                     key = val['_source']['objectKey']
                     if key not in output:
                         output.append(key)
-    #resp = requests.get(url,headers={"Content-Type": "application/json"}).json()
-    #resp = requests.get(url)
     print('output is')
     print(output)
     return output
-    # return close(intent_request['sessionAttributes'],
-    #          'Fulfilled',
-    #          {'contentType': 'PlainText',
-    #           'content': ''.join(output)})
 def lambda_handler(event, context):
-    # TODO implement
     os.environ['TZ'] = 'America/New_York'
     time.tzset()
     client = boto3.client('lex-runtime')
-    #logger.debug("In lambda")
     response_lex = client.post_text(
     botName='photobott',
     botAlias="testbot",
@@ -70,7 +61,7 @@ def lambda_handler(event, context):
         if(response_lex['slots'].get('KeyTwo')!=None):
             keys.append(response_lex['slots'].get('KeyTwo'))
         print(keys)
-        pictures = search_intent(keys) #get images keys from elastic search labels
+        pictures = search_intent(keys) 
         response = {
             "statusCode": 200,
             "headers": {"Access-Control-Allow-Origin":"*","Content-Type":"application/json"},
@@ -83,5 +74,4 @@ def lambda_handler(event, context):
             "headers": {"Access-Control-Allow-Origin":"*","Content-Type":"application/json"},
             "body": [],
             "isBase64Encoded": False}
-    #logger.debug('event.bot.name={}'.format(event['bot']['name']))
     return response
