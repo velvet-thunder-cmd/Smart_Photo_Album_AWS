@@ -26,7 +26,7 @@ Resources:
       Description: LF2
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:lambda:us-west-2:224019584573:function:search-photos'
+      Role: 'arn:aws:iam::224019584573:role/service-role/search-photos-role-5nr1u9j1'
       Events:
         getAZsAPI:
           Type: Api
@@ -49,7 +49,7 @@ Resources:
       Description: LF1
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:lambda:us-west-2:224019584573:function:index-photos'
+      Role: 'arn:aws:iam::224019584573:role/service-role/index-photos-role-aykts29c'
       Environment:
         Variables:
           REGION: us-east-1
@@ -66,7 +66,7 @@ Resources:
       Description: LF3
       MemorySize: 128
       Timeout: 30
-      Role: 'arn:aws:iam::098015424271:role/service-role/upload_to_s3-role-9x78khho'
+      Role: 'arn:aws:iam::224019584573:role/service-role/uploadtos3-role-1g00z9xv'
       Events:
         getAZsAPI:
           Type: Api
