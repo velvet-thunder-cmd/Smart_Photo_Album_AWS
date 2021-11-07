@@ -2,24 +2,24 @@ AWSTemplateFormatVersion: 2010-09-09
 Transform: 'AWS::Serverless-2016-10-31'
 Description: P1
 Resources:
-  A3b1website:
+  b2phtos:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: b2phtos
     Metadata:
       'AWS::CloudFormation::Designer':
         id: e1e00b0a-5f39-48e8-bb88-1032cec330f4
-  A3b2photostore:
+  b1phtos:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: b1phtos
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 553d59a4-4938-412e-99d9-37ae122b8e4a
-  A3L2:
+  search-photos:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: A3L2
+      FunctionName: search-photos
       Handler: lambda_function.lambda_handler
       Runtime: python3.6
       CodeUri: ./LF2
@@ -39,7 +39,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: 87778e30-ba4d-4b4d-8cba-35e1923e76af
-  A3L1:
+  index-photos:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: A3L1
@@ -56,7 +56,7 @@ Resources:
     Metadata:
       'AWS::CloudFormation::Designer':
         id: dd301049-1809-4426-8143-c8b1be328538
-  A3L3:
+  upload_to_s3:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: A3L3
