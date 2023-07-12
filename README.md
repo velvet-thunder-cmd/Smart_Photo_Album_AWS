@@ -1,2 +1,2 @@
-# CC_HW2
-Smart Photo Album
+
+# Smart Photo Album
